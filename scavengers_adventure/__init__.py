@@ -16,6 +16,7 @@ def create_app(test_config=None):
             "<!DOCTYPE html>"
             "<html> <head> <title>Scavenger's Adventure</title></head>"
             "<body><h2>Welcome to the Scavenger's adventure!</h2></body></html>"
+            "{}".format(app.config['SECRET_KEY'])
         )
 
 
