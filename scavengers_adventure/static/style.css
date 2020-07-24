@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Sora";
+}
+
+main {
+  max-width: 1200px;
+  min-height: 100vh;
+  width: 100%;
+  margin: auto;
+  background-color: #eeeeee;
+}
+
+h1 {
+  text-align: center;
+  padding: 50px;
+}
+
+p {
+  padding: 10px 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+  main {
+    width: 90%;
+  }
+}

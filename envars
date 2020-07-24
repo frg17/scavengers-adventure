@@ -1,0 +1,2 @@
+export FLASK_APP=scavengers_adventure
+export FLASK_ENV=development
