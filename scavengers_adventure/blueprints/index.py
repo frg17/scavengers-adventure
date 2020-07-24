@@ -1,6 +1,6 @@
 import functools
-from cryptography.fernet import Fernet
 from flask import Blueprint, request, render_template, redirect, flash, make_response
+from scavengers_adventure.encrypto import decrypt
 
 bp = Blueprint('index', __name__)
 
@@ -11,7 +11,7 @@ def index():
 
 
 @bp.route('/decrypt', methods=["POST"])
-def decrypt():
+def decryption():
 	if 'file-input' not in request.files:
 		return 'pffffffft'
 
@@ -22,7 +22,7 @@ def decrypt():
 	
 
 	try:
-		decrypted = decrypt_file(f, request.form['secret-key'])
+		decrypted = decrypt(f.read(), request.form['secret-key'])
 	except:
 		flash("Your key isn't completely accurate hmm..")
 		return redirect('/')
@@ -36,11 +36,3 @@ def decrypt():
 	response.headers.set('Content-Transfer-Encoding', 'binary') 
 
 	return response
-
-
-
-def decrypt_file(file, key):
-	fer = Fernet(key.encode())
-	file_data = file.read()
-	decrypted = fer.decrypt(file_data)
-	return decrypted
