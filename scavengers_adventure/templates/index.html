@@ -4,4 +4,35 @@
   <p>This is also supposed to be more of a proof of concept.</p>
 </div>
 
+{% with messages = get_flashed_messages()%} {% if messages %}
+<ul class="flashes">
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %} {% endwith %}
+<form
+  id="theform"
+  action="/decrypt"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <input class="inp" type="text" name="secret-key" /><br />
+  <input class="inp" type="file" name="file-input" /><br />
+  <input type="submit" />
+</form>
+
+<script>
+  const form = document.getElementById("theform");
+  const form2 = form.cloneNode(true);
+  form2.id = "theform2";
+  form.addEventListener("submit", () => {
+    setTimeout(() => {
+      let inputs = document.querySelectorAll(".inp");
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = "";
+      }
+    }, 1000);
+  });
+</script>
 {% endblock %}

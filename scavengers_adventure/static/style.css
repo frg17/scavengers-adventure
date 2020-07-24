@@ -29,3 +29,15 @@ p {
     width: 90%;
   }
 }
+
+form {
+  margin: 20px;
+}
+
+input {
+  margin: 5px 10px;
+}
+
+.flashes {
+  margin: 0px 40px;
+}
