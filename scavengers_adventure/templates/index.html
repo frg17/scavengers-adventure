@@ -4,6 +4,7 @@
   <p>This is also supposed to be more of a proof of concept.</p>
 </div>
 
+<div class="form-container">
 {% with messages = get_flashed_messages()%} {% if messages %}
 <ul class="flashes">
   {% for message in messages %}
@@ -11,16 +12,22 @@
   {% endfor %}
 </ul>
 {% endif %} {% endwith %}
+<label>Decrypt a supersecret file here:</label>
 <form
   id="theform"
   action="/decrypt"
   method="post"
   enctype="multipart/form-data"
 >
-  <input class="inp" type="text" name="secret-key" /><br />
+  <input class="inp" type="text" name="secret-key" placeholder="Supersecret key here."/><br />
   <input class="inp" type="file" name="file-input" /><br />
-  <input type="submit" />
+  <input type="submit" value="Decrypt"/>
 </form>
+
+<a class="supersecret-image" href="/static/supersecret.jpg" download>Supersecret encrypted file.</a>
+
+</div>
+
 
 <script>
   const form = document.getElementById("theform");
