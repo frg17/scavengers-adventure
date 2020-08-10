@@ -1,0 +1,2 @@
+set FLASK_APP=scavengers_adventure
+set FLASK_ENV=development
