@@ -9,6 +9,10 @@ bp = Blueprint('index', __name__)
 def index():
     return render_template('index.html')
 
+@bp.route('/empty/wouldyouopenthisdoor')
+def thedoor():
+	return render_template('door.html')
+
 
 @bp.route('/decrypt', methods=["POST"])
 def decryption():
