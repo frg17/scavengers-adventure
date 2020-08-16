@@ -1,0 +1,139 @@
+<title>Adventure</title>
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<style>
+  body {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    margin:0;
+    text-align: center;
+  }
+
+  .sky {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-shadow: inset 0 0 3px #000;
+    border-radius: 5px;
+    border: 1px solid #111;
+    overflow: hidden;
+    background-image: url("https://res.cloudinary.com/dqxnksmgd/image/upload/v1596513499/sky.jpg");
+    background-size: cover;
+}
+  #theform {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  input {
+    width: 90%;
+  }
+
+  input, .file-upload {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    padding: 50px 100px;
+    letter-spacing: 0.5em;
+    border-radius: 4px;
+  }
+
+  .file-upload {
+    background-color: black;
+    color: #f7f7f7;
+    border: 1px solid #ccc;
+    padding: 50px 100px;
+    cursor: pointer;
+    display:block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  input[type="text"] {
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    border: none;
+    border-bottom: 3px solid white;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+  input[type="text"]:active {
+    border: 3px solid white;
+  }
+
+  input[type="submit"]:hover{
+    letter-spacing: 10px;
+    background-color: rgba(255,255,255,0.5);
+    cursor: pointer;
+  }
+
+  @media only screen and (min-width: 1000px) {
+    #theform {
+      width: 50%;
+    }
+    input, .file-upload {
+      font-size: 1em;
+    }
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inp {
+    text-transform: none;
+  }
+
+</style>
+
+<div class="form-container sky">
+<label>Decrypt a supersecret file here:</label>
+<form
+  id="theform"
+  action="/decrypt"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+  <input class="inp" type="text" name="secret-key" placeholder="Supersecret key here."/><br />
+  <label class="file-upload">Choose file
+    <input class="inp" type="file" name="file-input" /><br />
+  </label>
+  <input type="submit" value="Decrypt"/>
+</form>
+
+</div>
+
+
+<script>
+  const form = document.getElementById("theform");
+  const form2 = form.cloneNode(true);
+  form2.id = "theform2";
+  form.addEventListener("submit", () => {
+    setTimeout(() => {
+      let inputs = document.querySelectorAll(".inp");
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = "";
+      }
+    }, 1000);
+  });
+</script>

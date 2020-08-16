@@ -21,19 +21,43 @@ body {
   background-image: url("https://res.cloudinary.com/dqxnksmgd/image/upload/v1596513499/sky.jpg");
   background-size: cover;
 }
-
-#doorContainer {
+#eye {
   display: none;
+  width: 172px;
+  height: 180px;
+  border-radius: 50%;
+ background-image: url("https://res.cloudinary.com/dqxnksmgd/image/upload/v1597028884/eye.png");
+  position: absolute;
+  -webkit-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  -moz-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  -o-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
 }
 
-#door {
-  width: 251px;
-  height: 414px;
-  background-image: url("https://res.cloudinary.com/dqxnksmgd/image/upload/v1597029298/door.png");
-  margin-left: auto;
-  margin-right: auto;
+@-webkit-keyframes moveX {
+  from { left: 0; } to { left: 90%; }
 }
-
+@-moz-keyframes moveX {
+  from { left: 0; } to { left: 90%; }
+}
+@-o-keyframes moveX {
+  from { left: 0; } to { left: 90%; }
+}
+@keyframes moveX {
+  from { left: 0; } to { left: 90%; }
+}
+@-webkit-keyframes moveY {
+  from { top: 0; } to { top: 80%; }
+}
+@-moz-keyframes moveY {
+  from { top: 0; } to { top: 80%; }
+}
+@-o-keyframes moveY {
+  from { top: 0; } to { top: 80%; }
+}
+@keyframes moveY {
+  from { top: 0; } to { top: 80%; }
+}
 
 .glitch {
   color: white;
@@ -44,18 +68,13 @@ body {
 
 }
 
-#message, #key {
-	margin-top: 30%;
-  text-align:center;
-  margin-bottom: 200px;
-}
-
-#key {
-  display: none;
+.message {
+	margin-top: 50px;
+	text-align: center;
 }
 
 
-@-webkit-keyframes noise-anim {
+@keyframes noise-anim {
   0% {
     clip: rect(66px, 9999px, 56px, 0);
   }
@@ -125,18 +144,18 @@ body {
 .glitch:after {
   content: attr(data-text);
   position: absolute;
-  left: 120px;
+  left: 220px;
   text-shadow: -1px 0 black;
   top: 0;
   color: white;
   background: black;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
-  -webkit-animation: noise-anim 2s infinite linear alternate-reverse;
+  animation: noise-anim 2s infinite linear alternate-reverse;
 
 }
 
-@-webkit-keyframes noise-anim-2 {
+@keyframes noise-anim-2 {
   0% {
     clip: rect(15px, 9999px, 30px, 0);
   }
@@ -204,50 +223,52 @@ body {
 .glitch:before {
   content: attr(data-text);
   position: absolute;
-  left: 120px;
+  left: 220px;
   text-shadow: 1px 0 black;
   top: 0;
   color: white;
   background: black;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
-  -webkit-animation: noise-anim-2 10s infinite linear alternate-reverse;
+  animation: noise-anim-2 10s infinite linear alternate-reverse;
   
 }
 
 .fadeIn {
-  -webkit-animation-name: fadeIn;
+  opacity: 0;
+  animation-name: fadeIn;
   animation-duration: 5s;
   color: white;
-  animation-fill-mode: forwards;
-  animation-duration: 1;
 }
 
-.fadeInSecond {
-  animation-delay: 3s;
-}
-
-@-webkit-keyframes fadeIn {
+@keyframes fadeIn {
   0% {
     opacity: 0;
   }
 
+  75% {
+    opacity: 1;
+  }
 
   100% {
-    opacity: 1;
+    opacity: 0;
   }
 }
 
 .fadeInStay{
   animation-name: fade-in-stay;
-  -webkit-animation-name: fade-in-stay;
   animation-duration: 5s;
-  -webkit-animation-duration: 5s;
-  text-align: center;
-  animation-fill-mode: forwards;
-  -webkit-animation-fill-mode: forwards;
 }
 
+
+@keyframes fade-in-stay {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
 
 .btn {
   background-color: white;
@@ -255,12 +276,11 @@ body {
   padding: 50px 100px;
   border-radius: 4px;
   font-size: 1.5em;
-  opacity: 0;
 }
 
 #btn-layer {
   text-align: center;
-  margin-top: 20%;
+  margin-top: 30%;
 }
 
 .btn:hover {
@@ -271,130 +291,33 @@ body {
 
 #secret-key {
 	display: none;
-	margin-top: 50%;
-}
-
-.spin {
-    -webkit-animation: spin 4s;
-    animation-iteration-count: 1;
-}
-
-.floatDown {
-    -webkit-animation: float-down 4s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-}
-
-
-@-webkit-keyframes spin{
-    from {
-        -webkit-transform: rotate(0deg);
-        
-    }
-    to {
-        -webkit-transform: rotate(359deg);
-
-    }
-}
-
-@keyframes float-down {
-  0% {
-    transform: translateY(-10rem);
-  }
-  100% {
-    transform: translateY(5rem);
-  }
-}
-
-.float{
-    -webkit-animation-name: floating;
-    -webkit-animation-duration: 3s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: ease-in-out;
-    -moz-animation-name: floating;
-    -moz-animation-duration: 3s;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-timing-function: ease-in-out;
-
-}
-
-@-webkit-keyframes floating{
-    from {-webkit-transform:translate(0, 0rem);}
-    50% {-webkit-transform:translate(2rem, 5rem);}
-    to {-webkit-transform: translate(0, 0rem);    }    
-}
-    
-@-moz-keyframes floating{
-    from {-moz-transform:translate(0, 0rem);}
-    50% {-moz-transform:translate(0, 5rem);}
-    to {-moz-transform: translate(0, 0rem);}    
-}
-
-.zoom {
-  animation: zoom 0.7s linear 1;
-  animation-fill-mode: forwards;
-}
-
-@keyframes zoom {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(10);
-
-  }
-
-}
-
-#key {
   text-transform: none;
+	margin-top: 30%;
 }
+
 
 </style>
 
 <html>
 <div class="sky">
-	<div id="doorContainer"><div id="door" onclick="openDoor()" ontouchstart="openDoor()"></div></div>
-   
-      <div id="message">
-      <div class="glitch fadeIn" data-text="You unlock this door with the key of imagination.">You unlock this door with the key of imagination.</div> 
-    </div>
-      <div id="btn-layer">
-      <a class="btn fadeIn fadeInSecond" onclick="showDoor()" ontouchstart="showDoor()">What door?</a>
-    </div>
- 
-    <div id="key">
-      <div class="glitch" data-text="Babel-17">4_Babel-17</div> 
+	<div id="eye" onclick="win()" ontouchstart="win()"></div>
+    <div class="message" id="secret-key">
+    	<div class="glitch" data-text="Electricsheep">1_Electricsheep</div>
+	</div>
+	<div id="btn-layer">
+    	<a class="btn" onclick="startEye()" ontouchstart="startEye()">Catch someone's eye</a>
     </div>
 </div>
 </html>
 
 <script>
-
-  function showDoor() {
-    var element = document.getElementById("door");
-    var container = document.getElementById("doorContainer");
-    var btn = document.getElementById("btn-layer");
-    var message = document.getElementById("message");
-    container.style.display="block";
-    container.classList.add("fadeInStay");
-    container.classList.add("float");
-    element.classList.add("floatDown");
-    btn.style.display="none";
-    message.style.display="none";
-
-  }
-
-  function openDoor() {
-  var element = document.getElementById("door");
-  element.classList.add("zoom");
-  setTimeout(secretKey,700);
-  }
-
-  function secretKey() {
-    document.getElementById("door").style.display="none";
-    document.getElementById("key").style.display="block";
-  }
-
+	function win(){
+		document.getElementById("eye").style.display="none";
+		document.getElementById("secret-key").style.display="block";
+		document.getElementById("secret-key").classList.add("fadeInStay");
+	}
+	function startEye(){
+		document.getElementById("eye").style.display="block";
+		document.getElementById("btn-layer").style.display="none";
+	}
 </script>
