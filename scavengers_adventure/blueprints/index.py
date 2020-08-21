@@ -1,5 +1,6 @@
 import functools
 from flask import Blueprint, request, render_template, redirect, flash, make_response
+from flask_cors import cross_origin
 from scavengers_adventure.encrypto import decrypt
 
 bp = Blueprint('index', __name__)
@@ -58,6 +59,11 @@ def theflashlight():
 @bp.route('/direction/themcirclestho')
 def tunnel():
 	return render_template('Tunnel.html')
+
+@bp.route('/ping')
+@cross_origin()
+def ping():
+	return "", 200
 
 
 	
