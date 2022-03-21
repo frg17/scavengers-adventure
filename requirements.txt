@@ -13,6 +13,6 @@ pycryptodome==3.9.8
 six==1.15.0
 toml==0.10.1
 typed-ast==1.4.1
-waitress==1.4.4
+waitress==2.1.1
 Werkzeug==1.0.1
 wrapt==1.12.1
